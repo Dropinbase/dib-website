@@ -1,0 +1,1 @@
+import{C as e}from"./current-dates-36ed5008.js";import{H as t,M as r}from"./mobile-burger-menu-13cc99c3.js";class s{static init(){new t(".terms",3,3),new r().initMobileMenu(),new e().current()}}s.init();

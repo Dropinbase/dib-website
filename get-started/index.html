@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css" />
+
+    <title>Dropinbase - Get Started</title>
+
+    <meta name="keywords" content="Getting Started, Install Dropinbase, Docker, Steps, Manual Installation, Native Installation, Linux, Windows, Apple, Mac, Osx">
+    <meta name="description" content="Getting Started. Steps to install Dropinbase using Docker, or running it natively">
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+
+          document.querySelectorAll('a[href^="/get-started/#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+              // Retrieve the current positions array from sessionStorage, or initialize it if not present
+              let positions = JSON.parse(sessionStorage.getItem('returnPositions') || "[]");
+              // Push the current scroll position onto the array
+              positions.push(window.pageYOffset);
+              // Store the updated array back into sessionStorage
+              sessionStorage.setItem('returnPositions', JSON.stringify(positions));
+            });
+          });
+
+          document.querySelectorAll('.backButton').forEach(button => {
+            button.addEventListener('click', function(e) {
+              e.preventDefault();
+              // Retrieve the positions array from sessionStorage
+              let positions = JSON.parse(sessionStorage.getItem('returnPositions') || "[]");
+              // Pop the last position off the array
+              const returnPosition = positions.pop();
+              // Store the updated array back into sessionStorage
+              sessionStorage.setItem('returnPositions', JSON.stringify(positions));
+              // Scroll back to the popped position if it exists
+              if (returnPosition !== undefined) {
+                window.scrollTo(0, returnPosition);
+              }
+            });
+          });
+
+      });
+
+    </script>
+    <script type="module" crossorigin src="/assets/getStarted-15ec4041.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/current-dates-36ed5008.js">
+    <link rel="modulepreload" crossorigin href="/assets/mobile-burger-menu-13cc99c3.js">
+    <link rel="stylesheet" href="/assets/current-dates-4b4aaac1.css">
+  </head>
+
+  <body>
+
+    <style>
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+  
+        50% {
+          transform: scale(1.2);
+        }
+      }
+    </style>
+
+<header>
+  <nav class="navigation">
+    <div class="mobile-only">
+      <div class="logo">
+        <a href="https://dropinbase.com/" target="blank"><img style="width: 4em;" src="/dib-logo.png"
+            alt="Dropinbase Logo" />
+            <div class="logo-text">Dropinbase</div></a>
+           
+      </div>
+      <button class="hamburger js-mobile-menu-toggle" type="button">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </button>
+    </div>
+
+    <div class="desktop-logo">
+      <a href="https://dropinbase.com/" target="blank">
+        <img style="width: 100px;" src="/dib-logo.png" alt="Dropinbase Logo" />
+          <div class="logo-text">Dropinbase</div>
+        </a>
+    </div>
+
+    <ul>
+      <li><a class="js-nav-item" href="/index.html#home">Home</a></li>
+      <li><a class="js-nav-item" href="/get-started/">Get Started</a></li>
+      <li><a class="js-nav-item" href="/pricing/">Pricing / Free</a></li>
+      <li><a class="js-nav-item" href="/#contribute">Earn / Contribute</a></li>
+      <li><a class="js-nav-item" href="/about-us/">About Us</a></li>
+      <!-- <li><a class="js-nav-item" href="/contact-us/">Contact Us</a></li> -->
+
+    </ul>
+  </nav>
+</header>
+
+    <div class="get-started">
+      <div>
+        <section id="divisions" class="section section--light">
+          <h2 class="title">Get Started</h2>
+
+          <div style="text-align: left;">
+
+            <p>There are two main options for installing Dropinbase.</p>
+            <p>
+              <ul>
+                <li><a href="/get-started/#ready-made-docker-container">Ready-made Docker Container</a></li>
+                <li><a href="/get-started/#manual-setup">Manual Setup</a></li>
+              </ul>
+            </p>
+            <p class="get-started--note">Note, Dropinbase can also be installed on <a class="js-nav-item" href="/get-started/#sharedHostingServers">Shared Hosting Servers</a></p>
+
+            <h3 class="title" id="ready-made-docker-container">Ready-made Docker Container</h3>
+            <p><a href="https://www.docker.com/what-docker" target="">Docker</a> is similar to a virtual machine, but is more efficient regarding resource use. Windows, Linux and macOS are supported.&nbsp;
+              <br>Using Docker has the advantage of a pre-configured Dropinbase setup that works "out of the box" and does not conflict with any existing applications.</p>
+            <p><span><strong>Note for Windows users:</strong> Docker is supported for&nbsp;<a href="https://docs.docker.com/desktop/install/windows-install/" target="_blank" rel="noopener">only specific versions of Windows</a>.</span></p>
+
+            <hr>
+            <h3 class="title">Steps:</h3>
+            <ol>
+              <li>
+                  Install the correct versions of Node.js and NPM if you haven't done so already:<br>
+                  <ul>
+                    <li>See the "<strong>Install Node.js &amp; NPM and optionally NVM</strong>" section under <a class="js-nav-item" href="/get-started/#installAngular">Install Angular</a></li>
+                  </ul>
+              </li>
+              <li>
+                  Install Docker Desktop if you haven't done so already:
+                  <ul>
+                    <li><a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/</a>
+                    <br><u>Note:</u> when prompted, authorize the Docker Desktop Installer with your system password during the install process. Privileged access is needed to install networking components, links to the Docker apps, and manage the Hyper-V VMs.</li>
+                    <li>On <b>Apple Mac</b>, you may need to resolve and issue with 'go'. Please see this thread:<a href="https://github.com/webdevops/Dockerfile/issues/395" target="_blank" rel="noopener">https://github.com/webdevops/Dockerfile/issues/395</a> </li>
+                  </ul>
+              </li>
+              <li>Restart your machine.</li>
+              <li>
+                  Open the Docker console and go to&nbsp;<strong>Settings </strong>-&gt; <strong>General </strong>and enable WSL2 ("use the WSL2 based engine").
+                  <ul class="get-started--note">
+                    <li><b>Windows only:</b> If Docker does not run, you may need to install <a href="https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v" target="_blank" rel="noopener">Hyper-V</a></li>
+                  </ul>
+              </li>
+              <li>Open a terminal window (eg PowerShell in Windows), and run the following commands:</li>
+              <li><code>npm install dropinbase -g [Enter]</code>&nbsp;- this installs the Dropinbase package globally</li>
+              <li><code>cd c:/projects/www</code> - change to the directory of where the project must be installed</li>
+              <li>
+                  <code>dropinbase init myProject</code> - create a new Dropinbase Client project with a name of your choice
+                  <ul class="get-started--note">
+                    <li>If PowerShell/Windows responds saying that running scripts is disabled on the system, first run the following:</li>
+                    <ul>
+                      <li><code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process</code></li>
+                    </ul>
+                      <li>More options <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3" target="_blank" rel="noopener">here</a></li>
+                  </ul>
+              </li>
+              <li><code>cd myProject</code> -<strong> </strong>change to the directory of the project you just created</li>
+              <li>
+                  Edit the <strong>docker-compose.yml</strong> file.
+                  <ul>
+                    <li>Change the <strong>container_name </strong>property to the name of your project, eg myProject.</li>
+                    <li>Save and close the file.</li>
+                  </ul>
+              </li>
+              <li>
+                  <code>npm start</code> - connect to the Dropinbase Docker container and start the services.
+                  <ul>
+                    <li>If any security messages appear, accept them.</li>
+                  </ul>
+              </li>
+              <li>Open your web browser and visit <code>https://localhost</code>.</li>
+              <li>If the system does not work, see the <a class="js-nav-item" href="/get-started/#troubleshootingInstallation">Troubleshooting Installation</a> page.</li>
+              <li>
+                  The Dropinbase <strong>Installer</strong> should open. Follow the on-screen installation steps.
+                  <ul>
+                    <li>These steps will guide you through installing a Dropinbase database that stores the design of your application.</li>
+                    <li>If you are connecting to a database server on your local machine, use the following as host instead of localhost: <strong>host.docker.internal</strong></li>
+                    <li>The last step will configure the <strong>/index.php</strong> file to open your new Dropinbase installation instead of the <strong>Installer</strong>.</li>
+                  </ul>
+              </li>
+              <li>To login, the default username is <strong>admin</strong>&nbsp;and the password is <strong>test.</strong></li>
+              <li>Update the <strong>admin </strong>password here: <code>http://myapp.dib/nav/dibLoginForm?primary_id=1</code></li>
+            </ol>
+
+            <hr>
+            <div>
+              <h2 class="title" id="manual-setup">Manual Setup</h2>
+              <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b> 
+              <p>The following steps should lead to a stable system. If any errors occur, see <a class="js-nav-item" href="/get-started/#troubleshootingInstallation">Troubleshooting Installation</a>.</p>
+              <ol>
+                <li>
+                    Ensure all the necessary <a class="js-nav-item" href="/get-started/#technologyAndRequirements">Technology and Requirements</a> are in place.
+                    <ol>
+                      <li>On Windows you can install&nbsp;<a href="http://www.wampserver.com/en/">WAMP</a> which is easy to manage, and installs some of the prequisites: MariaDb/PHP/Apache.</li>
+                      <li>WAMP installation steps (link my be outdated): <a href="http://forum.wampserver.com/read.php?2,138295" target="_blank" rel="noopener">http://forum.wampserver.com/read.php?2,138295</a></li>
+                    </ol>
+                </li>
+                <li>
+                    Configure a custom URL / Virtual Host for the application (eg <code>http://myapp.dib</code>)
+                    <ol>
+                      <li><a class="js-nav-item" href="/get-started/#apacheSettings">Apache Settings</a>. Remember to restart the webserver.</li>
+                    </ol>
+                </li>
+                <li>Install&nbsp;<a href="https://getcomposer.org/download/" target="_blank" rel="noopener">Composer</a>.</li>
+                <li>Pull a copy of the <a href="https://github.com/Dropinbase/dibclient" target="_blank" rel="noopener">Dropinbase Client</a> from Github (or copy the files from a working system) to a folder under <strong>/www/</strong>, eg into<strong> /www/myProject/</strong>.</li>
+                <li>
+                    Install the Dropinbase Core Framework and other default Composer packages under /vendor/:
+                    <ol>
+                      <li>
+                          <strong>Option A (Composer):</strong>
+                          <ol>
+                            <li>Open a terminal window (eg Powershell)</li>
+                            <li>cd to the <strong>/www/myProject </strong>folder</li>
+                            <li>type: <code>composer install -vvv[Enter]</code> (the -vvv option prints detailed debugging information should you need it).</li>
+                          </ol>
+                      </li>
+                      <li>
+                          <strong>Option B (Git):</strong>
+                          <ol>
+                            <li>Use Git to clone the Dropinbase Core Framework repository to <strong>/www/myProject/vendor/dropinbase/dropinbase</strong>: <a href="https://github.com/Dropinbase/framework" target="_blank" rel="noopener">https://github.com/Dropinbase/framework</a></li>
+                            <li>Note, certain features like converting HTML to PDF documents, single-signon using SAML and sending emails etc. relies on other Composer libraries. See the <strong>/composer.json</strong> file for details.</li>
+                          </ol>
+                      </li>
+                      <li>
+                          <strong>Option C (Multi-Tenant):</strong>
+                          <ol>
+                            <li>This is convenient if you already have the Dropinbase Core Framework on your machine</li>
+                            <li>See Dropinbase Documentation for more info</li>
+                          </ol>
+                      </li>
+                    </ol>
+                </li>
+                <li>
+                    Install Angular:<br>
+                    <ol>
+                      <li>Note, this only affects the ability to create new containers. Dropinbase should start up without it.</li>
+                      <li><a class="js-nav-item" href="/get-started/#installAngular">Install Angular</a></li>
+                    </ol>
+                </li>
+                <li>
+                    Install a copy of the Dropinbase database:
+                    <ol>
+                      <li>
+                          <strong>Option A (Installer):</strong>
+                          <ol>
+                            <li>
+                                Ensure the following line in the /www/myProject/index.php file is uncommented (this is the default):
+                                <div><code>require './installer.php'; die();</code></div>
+                            </li>
+                            <li>Open a browser and enter your custom url configured above: eg <code>http://myapp.dib/</code></li>
+                            <li>Ensure you have a database user with permissions to create a database (if not, see SQL under option B below).</li>
+                            <li>Use the Installer to complete the rest of the installation...&nbsp;</li>
+                          </ol>
+                      </li>
+                      <li>
+                          <strong>Option B (Manual):</strong>
+                          <ol>
+                            <li>
+                                Create a database and a user with permissions to read/write records in all its tables, eg:
+                                <ul class="get-started--code-block">
+                                  <li><code>CREATE DATABASE IF NOT EXISTS `<strong>my_new_dib_database</strong>` DEFAULT CHARACTER SET = 'utf8mb4' DEFAULT COLLATE 'utf8mb4_unicode_520_ci';</code></li>
+                                  <li><code>CREATE USER '<strong>my_dib_user</strong>'@'localhost' IDENTIFIED BY '<strong>my_password</strong>';</code></li>
+                                  <li><code><span class="hljs-keyword">GRANT</span> SELECT, ALTER, CREATE, CREATE TEMPORARY TABLES, DELETE, INDEX, INSERT, UPDATE&nbsp;<span class="hljs-keyword">ON</span> `<strong>my_new_dib_database`</strong>.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> <span class="hljs-string">'<strong>my_dib_user</strong>'</span>@<span class="hljs-string">'localhost'</span>;</code></li>
+                                  <li><code>FLUSH PRIVILEGES;</code></li>
+                                </ul>
+                            </li>
+                            <li>Edit the following SQL script, adding <strong><code>use my_new_dib_database;</code></strong> at the top:&nbsp; <strong>/vendor/dropinbase/dropinbase/installer/dropinbase.sql</strong>.</li>
+                            <li>Run the script.</li>
+                          </ol>
+                      </li>
+                    </ol>
+                </li>
+                <li>Create/edit all the necessary configuration files in the <strong>/configs</strong> folder. See Dropinbase Documentation for more info.</li>
+                <li>Delete the <strong>/runtime</strong> folder (it is recreated when the core framework receives any request).</li>
+                <li>Navigate to your chosen url, eg <code>http://myapp.dib</code></li>
+                <li>To login, the default username is <strong>admin</strong>&nbsp;and the password is <strong>test.</strong></li>
+                <li>Update the <strong>admin </strong>password here: <code>http://myapp.dib/nav/dibLoginForm?primary_id=1</code></li>
+                <li>See <a class="js-nav-item" href="/get-started/#troubleshootingInstallation">Troubleshooting Installation</a> if needed.</li>
+              </ol>
+
+            </div>
+          </div>
+          
+        </section>
+        <!-- #endregion -->
+
+        <!-- #region Shared Hosting Servers -->
+        <section id="sharedHostingServers" class="section section--blue">
+          <div style="text-align: left;">
+            <h2 class="title">Shared Hosting Servers</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+
+            <p>Dropinbase works well on shared hosts :). The only restriction is that development would need to be done on a different machine since very specific versions of Node.js and the Angular CLI must be installed to compile containers. Therefore, to make changes live, simply copy /<strong>dibCode</strong> and other folders accross from your development environment.</p>
+            <p>To install Dropinbase on a shared host:&nbsp;</p>
+            <ol>
+            <li>Get the whole system working on your local machine / development environment where you have root access.</li>
+            <li>Create the website folder on the shared host.</li>
+            <li>Copy your project folder, which includes the <strong>/dropinbase</strong> and <strong>/vendor</strong> folders, across to the new website's root folder.
+            <ol>
+            <li>The <strong>/dropinbase</strong> folder can be in any location, as long as the webserver can access it and the <strong>include_once()</strong> statement in the <strong>/index.php</strong> and <strong>/files/.php </strong>files references the new location. If you have access to the terminal, create a symbolic link to the new location of the <strong>/dropinbase</strong> folder.</li>
+            </ol>
+            </li>
+            <li>Create the dropinbase database, and any other databases you've installed locally, on the shared host.</li>
+            <li>Edit the <strong>/secets/Conn.php</strong> file. Ensure connection details are correct and that the array indexes in the <strong>Conn.php</strong> file match the values of the '<strong>id</strong>' fields in the&nbsp;<em>pef_database </em>table.</li>
+            </ol>
+            <p><strong>Some more notes</strong></p>
+            <ol>
+            <li>Follow the ~navdocs(Troubleshooting Installation)~ steps if there are any errors. Particularly check the contents of error logs and responses from network requests in the browser console.</li>
+            <li>Ensure folder permissions are set (see ~navdocs(File System Settings)~ for more info). Since code is not compiled on the server, all folders and files can be read-only.</li>
+            <li>Whenever design changes are made on your development environment, use the /nav/dibRelease facility to compile all containers etc., and then copy the relevant /dibCode folders accross to the shared host.</li>
+            </ol>
+            
+          </div>
+        </section>
+        <!-- #endregion -->
+
+        <!-- #region Technology and Requirements -->
+        <section id="technologyAndRequirements" class="section section--light">
+          <div style="text-align: left;">
+            <h2 class="title">Technology and Requirements</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+
+            <p>A working Dropinbase installation requires the following to be in place:</p>
+
+            <h3 class="title">Dropinbase Setup</h3>
+            <ul>
+              <li><strong>Dropinbase database</strong>: hosts the app design in a MySQL-compatible database engine, eg MySQL / MariaDb / Aurora / etc.&nbsp;<br>It stores the design of the application. Use a copy of it for each application (preferred), or use one copy for multiple applications.</li>
+              <li><strong>Secondary databases</strong>: hosts user data. Strictly optional since Dropinbase will work without.<br>Can be in SQLite / PostgreSQL / SQL Server / MySQL compatible.</li>
+              <li><strong>Dropinbase PHP Client</strong>
+                <span style="font-weight: 400;">: application-specific settings in PHP files, styling files, and your own custom code. The Client interfaces with (consumes) the Dropinbase Core Framework.</span>
+                <br><span style="font-weight: 400;">Obtain from&nbsp;</span><a style="font-weight: 400;" href="https://github.com/Dropinbase/dibclient" target="_blank" rel="noopener">https://github.com/Dropinbase/dibclient</a><span style="font-weight: 400;">.</span>
+                <br><span style="font-weight: 400;">Location: /www/myProjectFolder.</span>
+                <br><span style="font-weight: 400;">This is also where developers add their own code, and have the ability to overide /dropins in the Core Framework.</span>
+                <br><span style="font-weight: 400;">Note, the /index.php file contains a <b>require</b> statement that loads the Dropinbase Core Framework. Ensure the path is specified correctly.</span>
+              </li>
+              <li><strong>Composer and Third Party Extensions</strong>: Dropinbase uses&nbsp;<a href="https://getcomposer.org/" target="_blank" rel="noopener">Composer</a> for certain features, and also for installing and updating the Dropinbase Core Framework (see below).<br><div class="get-started--note">It is not required to use Composer - you can manually check the Framework out with GIT, or install the files. <br>The third party extensions are not required either, but some features like sending emails and creating PDF's won't work without them (Excel exports and imports are provided by DIB).</div></li>
+              <li><strong>Dropinbase Core Framework</strong>: the core framework<br>Install with <strong>Composer </strong>or obtain from <a href="https://github.com/Dropinbase/framework" target="_blank" rel="noopener">https://github.com/Dropinbase/framework</a>.<br>Location: /www/myProjectFolder/vendor/dropinbase/dropinbase.</li>
+              <li><strong>Configuraton File Settings</strong>:  (this is part of Dropinbase PHP Client files) various settings that tie everything together.&nbsp;Especially the following:<br>Database connection strings are stored in <strong>/projectFolder/secrets/Conn.php</strong>.
+                <br>The index values in <strong>Conn.php</strong> must match the <em>id</em> values of records in the <em>pef_database </em>table.<br>Also set the index values for $DIBDB, $LOGINDB etc in the <strong>/configs/DibTmpl.php</strong> 
+                file (note, this is a template file used to create the&nbsp;<strong>/configs/Dib.php</strong> file which is actually used).<br>Hard-coded and generated file-paths in the <strong>/configs/Dib.php</strong> file must be correct.</li>
+            </ul>
+
+            <h3 class="title">Server Requirements</h3>
+            <ul>
+              <li>PHP 5.4 and above.&nbsp;.</li>
+              <li>Nginx, or Apache 2.4 and above.&nbsp;See <a class="js-nav-item" href="/get-started/#apacheSettings">Apache Settings</a></li>
+              <li>
+                  Node.js &amp; NPM (correct versions are important) - necessary on development machines only.
+                  <ul>
+                    <li>Node.js will install npm which will be used to install Angular during installation of Dropinbase.</li>
+                    <li><a class="js-nav-item" href="/get-started/#installAngular">Install Angular</a> - see the "<strong>Install Node.js &amp; NPM and optionally NVM</strong>" section.</li>
+                  </ul>
+              </li>
+              <li>4Gb server space (excl database system &amp; user files).</li>
+              <li>
+                  Database system (various):
+                  <ul>
+                    <li>Dropinbase database: MySQL compatible, eg. MySQL/MariaDb/AuroraDb/SkySQL.
+                      <ul>
+                        <li>Ensure your <b>my.ini</b> file is configured for UTF-8 and the correct collation:
+                          <ul>
+                            <li><b>[mysql]</b>
+                              <ul>
+                                <li>default_character_set=utf8mb4</li>
+                              </ul>
+                            </li>
+                            <li><b>[mysql]</b>
+                              <ul>
+                                <li>character-set-server=utf8mb4</li>
+                                <li>collation_server=utf8mb4_unicode_520_ci</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                        User database(s):&nbsp; MySQL compatible/PostgreSQL/SQL Server/Sqlite.
+                        <ul>
+                          <li>Creation of a module to support any other RDBMS is about 2 days work.</li>
+                        </ul>
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+            
+            <h3 class="title">File System Permissions</h3>
+            <ul>
+              <li>See <a class="js-nav-item" href="/get-started/#fileSystemSettings">File System Settings</a></li>
+            </ul>
+
+            <h3 class="title">Client Browsers</h3>
+            <ul>
+              <li>JavaScript &amp; HTML 5 compatible</li>
+            </ul>
+
+          </div>
+        </section>
+
+
+    <!-- #region File System Settings -->
+        <section id="fileSystemSettings" class="section section--blue">
+          <div style="text-align: left;">
+            <h2 class="title">File System Settings</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+
+            <p>NOTE: The Dropinbase Installer requires write permissions on the /projectFolder itself to overwrite the <strong>index.php</strong> file to comment out the line that runs the Installer.php file. If it fails it must be manually done.</p>
+            <p>On development machines, the webserver user (eg&nbsp;<strong>www-data</strong>) needs read/write permissions to files in the following folders, and all their subfolders:</p>
+            <ol>
+              <li style="font-weight: bold;"><strong>/runtime</strong></li>
+              <li>The various dropin <strong>/dibCode</strong> folders where files are created</li>
+              <li>The folders that Angular uses for compiling files</li>
+              <li>The folder identified by <strong>DIB::$USERSPATH</strong> in <strong>Dib.php</strong> - where user's store uploaded files. And any other custom folders in your project like this.</li>
+              <li>If you intend using the "<strong>Add Event &amp; PHP</strong>" link on the Designer, the webserver user will need rights to make changes to&nbsp;<strong>.php</strong> files in the <strong>/dropins/xxx/controllers/ </strong>folders.&nbsp;</li>
+            </ol>
+            <p class="get-started--warning"><span>On production servers all folders should be set to read-only, except the <strong>/runtime</strong> and user folders (eg <strong>DIB::$USERSPATH</strong>).</span></p>
+            <p>Use the <strong>chown </strong>and <strong>chmod </strong>commands to set ownership and file permissions, eg:</p>
+            <ul>
+              <li>chown -R yourlinuxuser:www-data /path/to/project</li>
+            </ul>
+            <p>Folders: assign read and execute permissions on all folders to the owner (yourlinuxuser) and the group (webserver user). Execute permissions are needed to enter folders. Ensure these permissions are set on&nbsp;<strong>all folders</strong>, including the <strong>/vendor/dropinbase/dropinbase </strong>sub-folders:</p>
+            <ul>
+              <li>find /path/to/project -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">chmod</span> 750 {} \;</li>
+            </ul>
+            <p>Files: assign read and write to the owner (yourlinuxuser), and just read to the group (webserver user)</p>
+            <ul>
+              <li>find /path/to/project -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">chmod</span> 640 {} \;</li>
+            </ul>
+            <p>Assign read/write permissions to the following folders (-R sets it recursively for subfolders):</p>
+            <ul>
+              <li>chmod -R 770 /path/to/project/runtime</li>
+              <li>chmod -R 770 /path/to/project/dropins/<strong>myDropin1</strong>/dibCode&nbsp; &nbsp; &nbsp; (must be set to 750 on <strong>production server</strong> if all dibCode files exist)</li>
+              <li>chmod -R 770 /path/to/project/dropins/<strong>myDropin2</strong>/dibCode&nbsp; &nbsp; &nbsp; (must be set to 750 on <strong>production server</strong> if all dibCode files exist)</li>
+              <li>etc</li>
+            </ul>
+            <p>Assign read/write permissions to folders where Angular generates code (must be set to 750 on <strong>production server</strong> if all dibCode files exist)</p>
+            <ul>
+              <li>cd /path/to/project/vendor/dropinbase/dropinbase/setNgxMaterial/angular</li>
+              <li>chmod -R 770 ./ngtmp</li>
+            </ul>
+            <p>Assign read/write permissions to folders where users upload files (if applicable):</p>
+            <ul>
+              <li>chmod -R 770 path/to/user/folder</li>
+              <li>etc.</li>
+            </ul>
+          </div>
+        </section>
+
+    <!-- #region Install Angular -->
+        <section id="installAngular" class="section section--light">
+          <div style="text-align: left;">
+            <h2 class="title">Install Node.js and Angular</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+
+            <h3 class="title">Install Node.js &amp; NPM and optionally NVM</h3>
+            <ul>
+              <li><strong>Angular works with specific versions only</strong>. If you have already installed Node.js, check the version using&nbsp;<code>node -v</code>&nbsp;in a terminal window.</li>
+              <li>Check the Dropinbase repository <a href="https://github.com/Dropinbase/framework/blob/master/README.md" target="_blank" rel="noopener">README</a> for the current version of Angular used in Dropinbase.</li>
+              <li>
+                  Then download the&nbsp;<strong>specific version</strong> of Node.js that is compatible with this version of Angular:
+                  <ul>
+                    <li>Check version:&nbsp;<a href="https://angular.io/guide/versions" target="_blank" rel="noopener">https://angular.io/guide/versions</a></li>
+                    <li>Download Node.js: <a href="https://nodejs.org/en/download/releases" target="_blank" rel="noopener">https://nodejs.org/en/download/releases</a></li>
+                  </ul>
+              </li>
+              <li>
+                  The installation of NVM helps to install and switch between versions of Node.js when needed:
+                  <ul>
+                    <li><strong>Windows</strong>: <a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows</a> or <strong>Linux/Mac</strong>: <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></li>
+                  </ul>
+              </li>
+            </ul>
+            <h3 class="title">Install Angular (after installing Dropinbase)</h3>
+            <p>Note, this only affects the ability to create/change containers. Dropinbase should start up without Angular being installed.
+            <br>This step is not necessary if you are installing the Dropinbase Docker container.</p>
+            <p>
+              <br>NPM (above) is required to install Angular.
+              <br>Run the following commands in a terminal window (eg PowerShell on Windows):</p>
+            <ol>
+              <li><code>cd /www/myProject/vendor/dropinbase/dropinbase/dropins/setNgxMaterial/angular</code></li>
+              <li>
+                  <code>ls</code> (or <code>dir</code> on Windows) on to list files and folders. If the <strong>node_modules </strong>folder or the <strong>package-lock.json</strong> file exists, delete them:
+                  <ul>
+                    <li><code>rm -rf ./node_modules</code> (or <code>rmdir /s /q node_modules</code> on Windows)</li>
+                    <li><code>rm -rf ./package-lock.json</code></li>
+                  </ul>
+              </li>
+              <li><code>npm install</code></li>
+              <li>If there are any errors: <code>npm audit fix --force</code></li>
+            </ol>
+            <h3 class="title">Start the Angular Compiler Watcher</h3>
+            <p class="get-started--note">This step is not necessary if you are installing the Dropinbase Docker container.<br>The Watcher is a Dropinbase script that runs in the background and watches for any Dropinbase containers to compile.<br>It speeds up the compilation process by avoiding the boostrapping process which runs otherwise each time.</p>
+            <p>The Watcher should start automatically, but if it doesn't, run the following commands in a terminal window:</p>
+            <ul>
+              <li><code>cd /www/myProject/vendor/dropinbase/dropinbase/dropins/setNgxMaterial/angular</code> - replace /www/myProject with your own.</li>
+              <li><code>npm run watch:modules</code></li>
+            </ul>
+            <p>&nbsp;</p>
+          </div>
+        </section>
+
+        <!-- #region Apache Settings -->
+        <section id="apacheSettings" class="section section--blue">
+          <div style="text-align: left;">
+            <h2 class="title">Apache Settings</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+
+            <p><em>Note, remember to save files and restart Apache for changes to take effect!&nbsp;</em></p>
+
+            <h3 class="title">Apache Modules</h3>
+            <p>The following Apache modules must be enabled:&nbsp;</p>
+            <ul>
+              <li>mod_rewrite</li>
+              <li>mod_headers</li>
+              <li>mod_mime (normally enabled)</li>
+            </ul>
+            <p>If you are enabling the /vendor/dropinbase/dropinbase/installer/configs/<strong>.htaccess.for.production</strong> file, the following modules must be enabled which allows cache files to be zipped:</p>
+            <ul>
+              <li>mod_deflate</li>
+              <li>mod_filters</li>
+              <li>mod_expires</li>
+              <li>mod_setenvif</li>
+            </ul>
+
+            <h3 class="title">Virtual Host</h3>
+
+            <p>Adding entries to the virtual host file allows you to host multiple installations of Dropinbase applications on a machine, using a separate URL for each.</p>
+            <p>Example:</p>
+            <p>You have two Dropinbase projects, stored in the following two folders:</p>
+            <ul>
+              <li><strong>/www/project1/ &nbsp;</strong>- we want to use <strong>http://dib.net</strong> to access it.</li>
+              <li><strong>/www/project2/</strong> &nbsp;- we want to use <strong>http://project2.dib.net</strong> to access it.</li>
+            </ul>
+            <ol>
+              <li>In the main Apache .conf file (eg <strong>httpd.conf</strong>), the virtual hosts file must be included by ensuring the following line is uncommented/exists:<br>(note, the file location and even the name will differ between installations):<br>
+                <ul>
+                  <li>Windows:
+                    <ul>
+                      <li>Include conf/extra/httpd-vhosts.conf&nbsp;&nbsp;</li>
+                    </ul>
+                  </li>
+                  <li>Linux:
+                    <ul>
+                      <li>IncludeOptional sites-enabled/*.conf</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Create a Virtual Host section in the file referenced above for each application. See the examples below...</li>
+              <li>Note the <strong>Allow, Deny</strong> and <strong>Order</strong> directives in older versions of Apache are deprecated and should be avoided. See&nbsp;<a href="https://httpd.apache.org/docs/2.4/howto/access.html">here&nbsp;</a>for more info.</li>
+              <li>Port 80 is being used. This setting must correspond with the port configured in httpd.conf</li>
+              <li>See&nbsp;<a href="https://httpd.apache.org/docs/2.4/howto/access.html">https://httpd.apache.org/docs/2.4/howto/access.html</a> for more info about allowing and disallowing connections.</li>
+              <li><strong>AllowOverride all </strong>ensures that .htaccess can redirect URLs to the correct PHP files.</li>
+              <li>Edit your hosts file if needed.
+                <ul>
+                  <li>On Windows it is normally the following file C:\Windows\System32\drivers\etc\hosts. (Note: open Notepad with "Run as Administrator" in order to save this file).</li>
+                  <li>Add lines that correspond with the URLs above, eg:
+                    <ul>
+                      <li>127.0.0.1&nbsp; &nbsp; &nbsp; &nbsp;dib.net</li>
+                      <li>127.0.0.1&nbsp; &nbsp; &nbsp; &nbsp;project2.dib.net</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Again, ensure that <strong>mod_rewrite </strong>is enabled in Apache's extensions.</li>
+            </ol>
+            <h4>Virtual Host File Entry Examples</h4>
+            <ul class="get-started--code-block">
+              <li><code>&lt;VirtualHost *:80&gt;</code>
+                <ul>
+                  <li><code>DocumentRoot "C:/wamp/www/project1"</code></li>
+                  <li><code>ServerName dib.net</code></li>
+                  <li><code>&lt;directory "C:/wamp/www/project1"&gt;</code>
+                    <ul>
+                      <li><code>Options -Indexes +FollowSymLinks</code></li>
+                      <li><code>AllowOverride all</code></li>
+                      <li><code>Require all granted</code></li>
+                    </ul>
+                  </li>
+                  <li><code>&lt;/directory&gt;</code></li>
+                </ul>
+              </li>
+              <li><code>&lt;/VirtualHost&gt;</code></li>
+            </ul>
+            <ul class="get-started--code-block">
+              <li><code>&lt;VirtualHost *:80&gt;</code>
+                <ul>
+                  <li><code>DocumentRoot "C:/wamp/www/project2"</code></li>
+                  <li><code>ServerName project2.dib.net</code></li>
+                  <li><code>&lt;directory "C:/wamp/www/project2"&gt;</code>
+                    <ul>
+                      <li><code>Options -Indexes +FollowSymLinks</code></li>
+                      <li><code>AllowOverride all</code></li>
+                      <li><code>Require all granted</code></li>
+                    </ul>
+                  </li>
+                  <li><code>&lt;/directory&gt;</code></li>
+                </ul>
+              </li>
+              <li><code>&lt;/VirtualHost&gt;</code></li>
+            </ul>
+            <h3 class="title">Error Log</h3>
+            <p>To enable error logging for Apache, ensure the following line is uncommented/exists in httpd.conf (replace the path with your own):</p>
+            <p><code>ErrorLog "c:/wamp/logs/apache_error.log"</code></p>
+            <p>It may be useful to log errors in Apache's log file for debugging purposes, but this file can become very large depending on the LogLevel parameter (see comments in httpd.conf).</p>
+            <p>&nbsp;</p>
+          </div>
+        </section>
+    <!-- #endregion -->
+
+    <!-- #region Troubleshooting Installation -->
+        <section id="troubleshootingInstallation" class="section section--light">
+          <div style="text-align: left;">
+            <h2 class="title">Troubleshooting Installation</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+
+            <p>Note, after applying a fix below, delete the <strong>/www/projectFolder/runtime</strong> folder before testing further.</p>
+            <ol>
+              <li>
+                  <strong>Delete the /www/projectFolder/runtime folder</strong>
+                  <ul>
+                    <li>When either of the <strong>/configs/Dib.php</strong> or <strong>/runtime/deleteMeToInitDIB.dtxt</strong> files do not exist, Dropinbase goes through an initialization process where it creates missing files under <strong>/runtime</strong> and recreates all active permission entries (for more info, see the point below for Permission log entries).</li>
+                    <li>Refresh the website. If there are still problems, continue working through these steps.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>Check error logs</strong>
+                  <ul>
+                    <li>Dropinbase stores errors in the <b>pef_error_log</b> table by default. If it cannot write to the table, errors are written to the <b>/www/myProject/runtime/logs/error.log</b> file instead.</li>
+                    <li>Dropinbase stores permissions errors in the /runtime/logs/Permissions.log file (see section below).</li>
+                    <li>Also check the webserver, PHP and operating system error logs.</li>
+                    <li><strong>Note</strong>: normally the first error listed is also the source of other errors.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>The webserver is not starting</strong>
+                  <ul>
+                    <li>
+                        Check whether another service on the current machine uses the same port (eg Skype could be using port 8080).
+                        <ul>
+                          <li>Check the webserver and the operating system's error/event logs for any indications.</li>
+                          <li>Terminate any suspect service and try again.</li>
+                          <li>If your webserver uses a custom port, eg 81, then edit the virtual host file entry to match this port. Remember to use the port in URL's, eg http://myapp.dib:81</li>
+                        </ul>
+                    </li>
+                    <li>
+                        The webserver configuration file has an error (eg httpd.conf for Apache and nginx.conf for Nginx)
+                        <ul>
+                          <li>Check the webserver and the operating system's error/event logs for any indications.</li>
+                          <li>Attempt to restart the webserver with each change made.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        A webserver module or PHP extension may not be properly configured or they may reference a file (eg a .dll) that does not match the operating system.&nbsp;
+                        <ul>
+                          <li>Remove any references to suspect modules or extensions one-by-one and try starting the webserver again until the problem is found.</li>
+                          <li>Consult search engines from there for your specific version of PHP and webserver.</li>
+                        </ul>
+                    </li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>Can Dropinbase connect to the database server?</strong>&nbsp;
+                  <ul>
+                    <li>The /runtime/logs/error.log file will list the error.</li>
+                    <li>Check that the values of $DIBDB and $LOGINDB in the /configs/Dib.php file correspond with the <em>id </em>values in the <em>pef_database </em>table and with the index values in the /secrets/Conn.php file.</li>
+                    <li>See /configs/Example_Conn.php to check whether the syntax of entries in Conn.php are correct.</li>
+                    <li>Check that the database server is running. Use a tool like HeidiSql to connect (<a href="https://www.heidisql.com/" target="_blank" rel="noopener">www.heidisql.com</a>) using the same credentials as setup in the /secrets/Conn.php file.</li>
+                    <li>Establish if the credentials used in /secrets/Conn.php has rights to read/write the dropinbase database tables.</li>
+                    <li>See Connecting to Databases in Dropinbase Help for more info.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>There are errors in /runtime/logs/Permissions.log (also available in the Designer).</strong>
+                  <ul>
+                    <li>You may have been logged out&nbsp; - log in again.</li>
+                    <li>
+                        A request was made that violates the permission rules. Most requests have a containerName parameter. <br>If this container does not exist in the active permission tables <em>(pef_perm_active </em>and <em>pef_perm_active_list)</em>, a permission error will result.&nbsp;
+                        <ul>
+                          <li>Has the container been deleted?&nbsp;</li>
+                          <li>Rebuild all permissions (use the green button in the Designer) and try again.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        If the above does not resolve the issue, this is normally an indication that Dropinbase could not populate the active permission tables<em>.</em>
+                        <ul>
+                          <li>Delete the <strong>/www/projectFolder/runtime </strong>folder (see the first main point above). This will recreate permission records for all containers, including containers in dropins of which&nbsp;the <strong>dibCode </strong>files exist, but not the original design records. Dropinbase ships with the <strong>dibCode </strong>files of the Designer and other admin pages, but not with their design records.</li>
+                          <li>To identify the dropins that have these dibCode files (but not the design records) the <strong>pef_dropin_cache_db_id </strong>field in <strong>pef_dropin&nbsp;</strong>must be set. It references the database which these containers must be linked to (note, for the admin pages it is the main Dropinbase database).&nbsp;</li>
+                          <li>By default dibAdmin (setNgxMaterial) is listed, which means the permission records stored in the following file are incorporated: /vendor/dropinbase/dropinbase/dropins/setNgxMaterial/dibAdmin/dibCode/_permFiles/setNgxMaterial_dibAdmin.dtxt</li>
+                          <li>Ensure this file (and others listed) exists, and contains all the necessary records.</li>
+                          <li>Ensure the <strong>pef_dropin_cache_db_id&nbsp;</strong>field points to the main Dropinbase database record for the dibAdmin (setNgxMaterial) dropin record, and any other suppliers' records are also set.</li>
+                          <li>Delete the <strong>/runtime</strong> folder and refresh the website and check again for errors in all the logs.</li>
+                        </ul>
+                    </li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>Check the browser Developer Tools for any errors</strong>
+                  <ul>
+                    <li>In the browser, open the Developer Tools (press F12 on Chrome)</li>
+                    <li>Refresh the website.</li>
+                    <li>Check the Console-tab for errors.</li>
+                    <li>Click on the Network-tab, and then on all the requests. For each, check the Preview-tab (under the Network-tab) for errors.</li>
+                    <li>Except for errors, any missing requests may also indicate a problem.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>The website is not working properly</strong>
+                  <ul>
+                    <li>(Linux/Mac only): ensure the webserver has the necessary permissions to read/write files where needed (see <a class="js-nav-item" href="/get-started/#fileSystemSettings">File System Settings</a> for more info).</li>
+                    <li>Ensure that the virtual host file entry for dropinbase specifies the same port number (eg 80 or 81) that your webserver is using.</li>
+                    <li>Restart the webserver.</li>
+                    <li>
+                        Run the Dropinbase intialization process:
+                        <ul>
+                          <li>Ensure your/configs/DibTmpl.php file configuration is correct.</li>
+                          <li>Delete the /www/myProject/runtime folder and refresh the website.</li>
+                        </ul>
+                    </li>
+                    <li>Check all the error logs (see above) for any clues.</li>
+                    <li>
+                        Check that the necessary webserver and PHP settings are enabled and working:
+                        <ul>
+                          <li>
+                              If you have Composer installed, run the following in a terminal window (eg Powershell on Windows) to view installed PHP extensions:&nbsp;
+                              <ul>
+                                <li><code>cd /www/myProject</code></li>
+                                <li><code>composer show --platform</code></li>
+                              </ul>
+                          </li>
+                          <li>
+                              Alternatively:
+                              <ul>
+                                <li>Uncomment the following line in /www/myProject/index.php:&nbsp; <code>// phpinfo(); die();</code></li>
+                                <li>Navigate to your site's url, eg http://myapp.dib/ or http://localhost/projectFolderName.</li>
+                              </ul>
+                          </li>
+                          <li>Review&nbsp;<a class="js-nav-item" href="/get-started/#apacheSettings">Apache Settings</a> and check for any PHP errors.</li>
+                          <li>Remember to undo any changes to index.php before commencing.</li>
+                        </ul>
+                    </li>
+                    <li>Check that the <b>.htaccess</b> file (in the root folder) and the webserver's virtual host file settings are in place and are correct.</li>
+                    <li>(PHP &lt;7.1): On Windows, libeay32.dll and ssleay32.dll needs to be accessible through the PATH environment variable for php_curl.dll to work. Add c:/php (your PHP folder) and restart Windows.</li>
+                    <li>Use the latest long term stable releases of PHP and your webserver.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>The system fails to load after the Installer executed the installation steps:</strong>
+                  <ul>
+                    <li>Check that the dropinbase database has been created successfully. If not, you can manually create the database using the manual steps above.</li>
+                    <li>
+                        Open /www/myProject/index.php
+                        <ul>
+                          <li><code>include_once("./installer.php"); die();</code> - line must be commented out.</li>
+                          <li>
+                              <div>
+                                <div><code>include_once("./vendor/dropinbase/dropinbase/index.php"); die();</code>&nbsp; - line must be active.</div>
+                              </div>
+                          </li>
+                        </ul>
+                    </li>
+                    <li>Navigate to the application, eg http://myapp.dib&nbsp; - if it does not work, continue with the troubleshooting procedure below.</li>
+                  </ul>
+              </li>
+              <li>
+                  <strong>The webserver/Dropinbase can't read/write files or execute PHP scripts:</strong>
+                  <ul>
+                    <li>Certain folders don't have the necessary read/write permissions. Normally not a problem on Windows.</li>
+                    <li>See <a class="js-nav-item" href="/get-started/#fileSystemSettings">File System Settings</a> for more info.&nbsp;</li>
+                  </ul>
+              </li>
+              <li>
+                <strong>Dropinbase and the Designer works, but not the Angular compiler</strong>
+                <ul>
+                  <li>Check that the correct versions of Node.js and the Angular CLI are installed and working.</li>
+                  <li>See <a href="#manualInstallationHelp">Manual Installation Help</a> for more info.</li>
+                </ul>
+              </li>
+              <li><strong>Further help: </strong>if the problem is still unresolved, please make use of the Community Forum or official support on <a href="https://www.dropinbase.com" target="_blank" rel="noopener">https://www.dropinbase.com</a>.</li>
+            </ol>
+            
+          </div>
+        </section>
+        <!-- #endregion -->
+    
+        <!-- #region Manual Installation Help -->
+        <section id="manualInstallationHelp" class="section section--light">
+          <div style="text-align: left;">
+            <h2 class="title">Manual Installation Notes</h2>
+            <b><a href="/get-started/#divisions">Top</a> | <a href="#" class="backButton">Back</a></b>
+          </div>
+
+          <div>
+            
+            <h3>Dropinbase Client Files</h3>
+            <p>These files host all the project's custom code, styling and configuration files.<br>A clean copy of the files can be downloaded from Github: <a href="https://github.com/Dropinbase/dibclient" target="_blank" rel="noopener">https://github.com/Dropinbase/dibclient</a></p>
+            <h3>Dropinbase Framework Files</h3>
+            <p>A copy of the framework files can be downloaded by registering on the User Portal and then using the Installer.<br>The <code>/dropinbase</code> folder is installed by default as a child folder of the main project folder which contains the Client Files. Its location can be set by using the <code>$SYSTEMPATH</code> variable in the <code>/configs/Dib.php</code> (or <code>DibTmpl.php</code>) file. Remember to also adjust the path in the <code>/index.php</code> file.</p>
+            <p>The webserver needs read access to it, and if containers will be generated/modified, then write access is required on the <code>/dropinbase/dropins/setNgxMaterial/angular/ngtmp</code> folder (note the <code>/angular</code> folder's location can be set using <code>$ANGULARPATH</code>).</p>
+            <p>For a multi-tenant setup (where multiple Dropinbase client projects access the same Dropinbase framework files), you can also use a symbolic link (virtual folder) to reference a common location.</p>
+            <h3>Database Connection</h3>
+            <p>A SQL script to install the main Dropinbase database is available in the <code>/dropinbase/installer</code> folder. The tables in this database contain the design of Dropinbase applications.</p>
+            <p>Note certain tables like <code>pef_login</code>, <code>pef_login_group</code>, <code>pef_sqllog</code>, <code>pef_audit_trail</code>, etc. can be moved to other databases (see the <code>/configs/DibTmpl.php</code> file for more info).</p>
+            <p>The indexes used in the <code>DIB::$DATABASES</code> array of the <code>/secrets/Conn.php</code> file need to match the <code>id</code> values of the <code>pef_database</code> table.</p>
+            <p>The index for the main Dropinbase database must also match the <code>$DIBDB</code> value in the <code>/configs/Dib.php</code> (or <code>DibTmpl.php</code>) file.</p>
+            <p>The Dropinbase database can be named anything as long as it matches the <code>'database'</code> value in the <code>Conn.php</code> file.</p>
+            <p>At present the database must be hosted in a MySQL-compatible server (e.g., MySQL, MariaDB, AuroraDB, SkySQL). BETA testing for other servers is underway - you can use the Migrate tool in the main menu to migrate the database and help with testing.</p>
+            <h3>Composer (/vendor folder)</h3>
+            <p>Composer is a PHP package manager. It can be downloaded from: <a href="https://getcomposer.org/download/" target="_blank" rel="noopener">https://getcomposer.org/download/</a></p>
+            <p>Once installed on the system, use the following commands to install the packages listed in the <code>/composer.json</code> file:</p>
+            <pre>cd /www/myProjectFolder
+            composer install</pre>
+            <p>Composer creates a <code>/vendor</code> folder to host the packages from the various third-party vendors.<br>Dropinbase will actually function without the vendor folder, but certain features will fail. If your project complains saying that <code>'autoload.php'</code> cannot be found, it normally is because the <code>/vendor</code> folder does not exist.</p>
+            <h3>Node.js (/node_modules folder)</h3>
+            <p>Dropinbase will function without Node.js (and Angular) but it is required for compiling Angular files, i.e., for creating/modifying project containers (pages), etc.</p>
+            <p>It is important to install the correct version of Node.js, else the Angular compiler will not work. You can obtain the current version from the <code>/dropinbase/README.md</code> file.</p>
+            <p>The recommended way of installing Node.js is by using an installer which can be used to easily swap between versions. For Windows, download it from:</p>
+            <p><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows</a></p>
+            <p>Then use the following commands:</p>
+            <pre>nvm install 20.9.0
+            nvm use 20.9.0</pre>
+            <p>NVM exists for Linux but it does not make Node globally available. Rather use <code>n</code>: <a href="https://github.com/tj/n" target="_blank" rel="noopener">https://github.com/tj/n</a></p>
+            <p>Alternatively, Node.js can be installed by running an installer from <code>https://nodejs.org/dist/v[VERSION]</code> e.g.&nbsp;<a href="https://nodejs.org/dist/v20.9.0" target="_blank" rel="noopener">https://nodejs.org/dist/v20.9.0</a></p>
+            <p>Use the following to confirm the active version:</p>
+            <pre>node -v</pre>
+            <p>Once Node.js is installed, the <code>/node_modules</code> folder can be created. First remove it if it already exists:</p>
+            <pre>cd /dropinbase/dropins/setNgxMaterial/angular
+            rmdir /s /q node_modules   (use rm -rf ./node_modules on Linux)
+            del package-lock.json      (use rm package-lock.json on Linux)
+            npm install</pre>
+            <p>Node.js installs NPM. NPM must be accessible and executable by PHP, under the account that runs the webserver.<br>You may need to adjust the <code>open_basedir</code> setting in the <code>php.ini</code> configuration file.</p>
+            <h3>Angular CLI</h3>
+            <p>Dropinbase merges templates with database records to create TypeScript files. These files are then compiled to JavaScript (which the browser understands) using PHP's exec() function with the Angular CLI, eg <code>exec("npx ngc -p ...");</code></p>
+            <p>Again, it is important to install the right version of Angular, which can be confirmed from the <code>/dropinbase/README.md</code> file.</p>
+            <p>Use these commands to install version 17.3.9:</p>
+            <pre>cd /dropinbase/dropins/setNgxMaterial/angular
+            npm install -g @angular/cli@17.3.9</pre>
+            <p>To verify the installation, use:</p>
+            <pre>ng version
+              or
+            npx ng version</pre>
+
+          </div>
+        </section>
+        <!-- #endregion -->
+
+    </div>
+  </div>
+
+    <!-- #region Copyright -->
+<footer class="section section--blue footer-copyright">
+  <div class="container">
+    <p>
+      <a href="/license/">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/terms/">Terms of Service</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/privacy/">Privacy Policy</a>
+    </p>
+    <br>
+    <p>
+      Copyright Dropinbase 2012-<span data-current-year></span> - All Rights Reserved
+    </p>
+  </div>
+</footer>
+<!-- #endregion -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+

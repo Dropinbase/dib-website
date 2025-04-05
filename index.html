@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Dropinbase - Low-code Development</title>
+
+  <meta name="description"
+    content="Low-code application development. May free tiers. Instant apps, no 'black-boxes', and fully customizable. Ideal for migrating legacy apps, and prototyping." />
+  <meta name="keywords"
+    content="Dropinbase, Low-code, No-Code, Free, Open-source, PHP, Angular, Angular Material, Database application, CRM, ERP, Admin systems, Database Independant, Community, Contribute, Earn Income, Combat Poverty, Empower People, Cloud Solutions, Software Development, AI, Machine Learning, Web Design" />
+
+  <script type="text/javascript">
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      const slider = document.querySelector('.slider');
+      const slideWidth = document.querySelector('.slide').offsetWidth;
+
+      currentSlide = index;
+      const translateValue = -currentSlide * slideWidth;
+      slider.style.transform = `translateX(${translateValue}px)`;
+
+      // reset class of all slides
+      const slides = document.querySelectorAll(('[id^="slide_"]'));
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].className = 'sml-text';
+      }
+
+      // set hihhlight class of this slide
+      var el = document.getElementById('slide_' + currentSlide);
+      el.className = 'highlight';
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function nextSlide() {
+      const totalSlides = document.querySelectorAll('.slide').length;
+      if (currentSlide < totalSlides - 1) {
+        showSlide(currentSlide + 1);
+      }
+    }
+  </script>
+  <script type="module" crossorigin src="/assets/main-dcba5e8b.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/current-dates-36ed5008.js">
+  <link rel="modulepreload" crossorigin href="/assets/mobile-burger-menu-13cc99c3.js">
+  <link rel="stylesheet" href="/assets/current-dates-4b4aaac1.css">
+</head>
+
+<header>
+  <nav class="navigation">
+    <div class="mobile-only">
+      <div class="logo">
+        <a href="https://dropinbase.com/" target="blank"><img style="width: 4em;" src="/dib-logo.png"
+            alt="Dropinbase Logo" />
+            <div class="logo-text">Dropinbase</div></a>
+           
+      </div>
+      <button class="hamburger js-mobile-menu-toggle" type="button">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </button>
+    </div>
+
+    <div class="desktop-logo">
+      <a href="https://dropinbase.com/" target="blank">
+        <img style="width: 100px;" src="/dib-logo.png" alt="Dropinbase Logo" />
+          <div class="logo-text">Dropinbase</div>
+        </a>
+    </div>
+
+    <ul>
+      <li><a class="js-nav-item" href="/index.html#home">Home</a></li>
+      <li><a class="js-nav-item" href="/get-started/">Get Started</a></li>
+      <li><a class="js-nav-item" href="/pricing/">Pricing / Free</a></li>
+      <li><a class="js-nav-item" href="/#contribute">Earn / Contribute</a></li>
+      <li><a class="js-nav-item" href="/about-us/">About Us</a></li>
+      <!-- <li><a class="js-nav-item" href="/faq/">FAQ</a></li> -->
+      <!-- <li><a class="js-nav-item" href="/forum/">Forum</a></li> -->
+      <!--<li><a class="js-nav-item" href="/contact-us/">Contact Us</a></li> -->
+
+    </ul>
+  </nav>
+</header>
+
+<body>
+
+  <style>
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+  </style>
+  <!-- #region Hero -->
+  <section id="home" class="hero">
+    <!-- Slideshow-->
+    <div class="col-container">
+      <div class="slide-text">
+        <div class="col">
+          <p class="italic">We are in the process of launching [awesomeness], please be patient...</p>
+          <p id="slide_0" class="highlight" onmouseover="showSlide(0)">Low-code - the way you want it...</p>
+          <p id="slide_1" class="sml-text" onmouseover="showSlide(1)"><b>Instantly</b> "appify" your existing databases</p>
+          <p id="slide_2" class="sml-text" onmouseover="showSlide(2)">New life to your legacy systems</p>
+          <p id="slide_3" class="sml-text" onmouseover="showSlide(3)">Fully functional prototypes in minutes</p>
+          <p id="slide_4" class="sml-text" onmouseover="showSlide(4)">Build any CRM/ERP/Database system you can imagine
+            <br>Fully customizable with bulk operations &amp; drag-and-drop ease
+          </p>
+        </div>
+      </div>
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slide">
+            <div class="col">
+              <img class="slide-img" src="/home-main.png" />
+            </div>
+          </div>
+          <div class="slide">
+            <div class="col">
+              <img class="slide-img" src="/slide-2.png" />
+            </div>
+          </div>
+          <div class="slide">
+            <div class="col">
+              <img class="slide-img" src="/slide-3.png" />
+            </div>
+          </div>
+          <div class="slide">
+            <div class="col">
+              <img class="slide-img" src="/slide-4.png" />
+            </div>
+          </div>
+          <div class="slide">
+            <div class="col">
+              <img class="slide-img" src="/slide-5.png" />
+            </div>
+          </div>
+        </div>
+        <div class="nav-container">
+          <button class="prev-btn" onclick="prevSlide()">Previous</button>
+          <button class="next-btn" onclick="nextSlide()">Next</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- -->
+    <div class="hero-content">
+      <div class="links-content">
+
+        <div class="link-item">
+          <a href="#contact" class="link-btn">
+            <h2>Get Started in Minutes</h2>
+            <p>Ready-made Docker install or manual install</p>
+          </a>
+        </div>
+        <div class="link-item">
+          <a href="#contact" class="link-btn">
+            <h2>Affordable Pricing / Free</h2>
+            <p>Free for startups, personal use, registered NPO's and educational use</p>
+          </a>
+        </div>
+        <div class="link-item">
+          <a href="#contact" class="link-btn">
+            <h2>Contribute / Earn</h2>
+            <p>Earn an income or contribute to a cause</p>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="content">
+        <h1>
+          Powering large and complex systems to small apps, for international corporations, ngo's and small companies
+        </h1>
+
+      </div>
+    </div>
+    <div class="hero-logo-slider">
+      <div class="logo-slider">
+        <div>
+          <a href="https://www.africanbank.co.za/" target="blank"><img src="/logos/logo-african-bank.png"
+              alt="African Bank" /></a>
+        </div>
+        <div>
+          <a href="https://www.libertyholdings.co.za/" target="blank"><img src="/logos/logo-liberty.png"
+              alt="Liberty Holdings" /></a>
+        </div>
+        <div>
+          <a href="https://www.nwu.ac.za/" target="blank"><img src="/logos/logo-university-north-west.png"
+              alt="North West University" /></a>
+        </div>
+        <div>
+          <a href="https://www.standardbank.co.za/" target="blank"><img src="/logos/logo-standard-bank.webp"
+              alt="Standard Bank" /></a>
+        </div>
+        <div>
+          <a href="https://www.santam.co.za/" target="blank"><img src="/logos/logo-santam.png" alt="Santam" /></a>
+        </div>
+        <div>
+          <a href="http://matogen.com/" target="blank"><img src="/logos/logo-matogen.svg" alt="Matogen" /></a>
+        </div>
+        <div>
+          <a href="" target="blank"><img src="/logos/logo-phxtrace.png" alt="Phx Trace" /></a>
+        </div>
+        <div>
+          <a href="" target="blank"><img src="/logos/logo-altpros.png" alt="Alternative Prosperity" /></a>
+        </div>
+
+
+      </div>
+  </section>
+  <!-- #endregion -->
+
+
+
+  <div class="division-sections" id="division-sections">
+    <div class="section-progress">
+      <div class="handle"></div>
+    </div>
+
+
+    <!-- #region CWD -->
+    <section id="corporate-web-software-development" class="section section--dark">
+      <div class="container container--offset">
+        <div class="panel">
+          <div class="panel-content">
+            <h2>Where Power and Simplicity Meet</h2>
+
+            <p><i>
+                For developers, Dropinbase stands out from other low/no-code systems in that there are no "black boxes" and very little
+                that cannot be fully and easily customized.
+              </i></p>
+
+            <div style="text-align: left;">
+              <ul>
+                <li>Full range of components, templates, and functions. Add your own.</li>
+                <li>Based in PHP &amp; Angular - both mature, proven, simple, heavily supported languages.</li>
+                <li>Intuitive and quick to learn, with numerous examples and helpful resources.</li>
+                <li>Responsiveness for all devices.</li>
+                <li>Advanced role-based permissions on page, event, record, and field levels.</li>
+                <li>Add code in PHP / Angular / TypeScript / JavaScript / HTML / SCSS / CSS.</li>
+                <li>Audit trails, activity logs, SQL logs.</li>
+                <li>Visual designer &amp; plugins - anyone can learn and build apps.</li>
+                <li>And most of all... we are building an awesome community!</li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel-media panel-media--corporate-web-software-development"></div>
+          <div class="panel-footer">
+            <ul class="technologies">
+              <li><img src="/angular.webp" alt="Angular" Title="Angular" /></li>
+              <li><img src="/node.webp" alt="NodeJs" Title="NodeJs" /></li>
+              <li><img src="/php.webp" alt="PHP" Title="PHP" /></li>
+              <li><img src="/docker.webp" alt="Docker" Title="Docker" /></li>
+              <li><img src="/sql.webp" alt="SQL" Title="SQL" /></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region AI -->
+    <section id="data-sciences-predictive-modeling-services" class="section section--light">
+      <div class="container container--offset">
+        <div class="panel panel--open-source">
+          <div class="panel-content">
+            <h2 style="color:#74768c">Open-source - Extendable - Community-powered</h2>
+            <p>
+              Any system can improve, and we have designed Dropinbase so that anyone can contribute.
+              <br>
+              By making the code available on GitHub, we can make incredible things happen together.
+            </p>
+          </div>
+          <div class="panel-media panel-media--community">
+          </div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Telematics -->
+    <!-- <section id="telematics-logistics-software-engineering" class="section section--blue">
+      <div class="container container--offset">
+        <div class="panel">
+          <div class="panel-content">
+            <h2>Testimonies</h2>
+            
+        </div>
+      </div>
+    </section> -->
+    <!-- #endregion -->
+
+    <!-- #region contribute -->
+    <section id="contribute" class="section section--dark">
+      <div class="container container--offset">
+        <div class="panel panel--contribute">
+          <div class="panel-content">
+            <h2>Earn / Contribute</h2>
+            Our dream is to see a sustainable world where everyone wins.
+
+            <br>If we all contribute and play our part, we can realize it.
+            <br>
+            <br>We believe that technology can and must greatly assist 
+            <br>in realizing a world that benefits everyone.
+
+            <h4>OPPORTUNITIES</h4>
+            <div style="margin-top: -40px;">
+              <ul style="text-align: left;line-height: 26px">
+                <li>If you/your company <b>enjoys building applications</b> that solve problems for clients, click
+                  here.</li>
+
+                <li>If you/your company offers <b>QA-testing</b> services, click here.</li>
+
+                <li>If you <b>can hack</b> or are a highly experienced <b>PHP developer</b> and believe you can
+                  make a positive difference by further securing Dropinbase, click here.</li>
+
+                <li>If you would like to <b>contribute time or funds</b> to develop innovative systems to
+                  <b>empower the disadvantaged, and fight poverty and corruption</b>, click here.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel-media panel-media--careers">
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- #endregion -->
+
+
+    <!-- #region goals -->
+    <section id="goals" class="goals-container">
+      <div class="container">
+        <h2 class="section-title">Goals &amp; Principles</h2>
+        <div style="text-align: center;">
+          <div class="item-points">People come first!</div>
+          <div class="item-points">Build cutting edge, responsible, secure systems with as little effort as possible
+          </div>
+          <div class="item-points">Simplicity, Power, Ease, Flexibility</div>
+          <div class="item-points">Build and facilitate a highly supportive community/network</div>
+          <div class="item-points">Embrace the future and have fun</div>
+          <div class="item-points">Do the right thing, and make the world a better place</div>
+
+        </div>
+    </section>
+    <!-- #endregion -->
+
+
+  <!-- #region Copyright -->
+  <footer class="section section--blue footer-copyright" style="min-height: 20px">
+    <div class="container">
+      <p>
+        <a href="/license/">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/terms/">Terms of Service</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/privacy/">Privacy Policy</a>
+      </p>
+      <br>
+      <p>
+        Copyright Dropinbase 2012-<span data-current-year></span> - All Rights Reserved
+      </p>
+    </div>
+  </footer>
+  <!-- #endregion -->
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  
+
+  <script type="f8055daf4d2fee297e1f69e9-text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-2748612-3');
+  </script>
+
+</body>
+</html>
